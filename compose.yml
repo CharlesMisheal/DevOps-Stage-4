@@ -12,7 +12,7 @@ services:
       - users-api
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`localhost`)"
+      - "traefik.http.routers.frontend.rule=Host(`http://misheal.duckdns.org/`)"
       - "traefik.http.routers.frontend.entrypoints=web"
       - "traefik.http.services.frontend.loadbalancer.server.port=8080"
       - "traefik.http.middlewares.websocket-headers.headers.customrequestheaders.Upgrade=websocket"
@@ -30,7 +30,7 @@ services:
       - users-api
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.auth-api.rule=Host(`auth.localhost`)"
+      - "traefik.http.routers.auth-api.rule=Host(`auth.http://misheal.duckdns.org/`)"
       - "traefik.http.services.auth-api.loadbalancer.server.port=8081"
       - "traefik.http.routers.auth-api.entrypoints=web"
   todos-api:
@@ -47,7 +47,7 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.todos-api.rule=Host(`todos.localhost`)"
+      - "traefik.http.routers.todos-api.rule=Host(`todos.http://misheal.duckdns.org/`)"
       - "traefik.http.services.todos-api.loadbalancer.server.port=8082"
       - "traefik.http.routers.todos-api.entrypoints=web"
   users-api:
@@ -60,7 +60,7 @@ services:
       - JWT_SECRET=${JWT_SECRET}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.users-api.rule=Host(`users.localhost`)"
+      - "traefik.http.routers.users-api.rule=Host(`users.http://misheal.duckdns.org/`)"
       - "traefik.http.services.users-api.loadbalancer.server.port=8083"
       - "traefik.http.routers.users-api.entrypoints=web"
   log-message-processor:
@@ -88,7 +88,7 @@ services:
       - "443:443"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.http://misheal.duckdns.org/`)"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=web"  # Traefik dashboard
     volumes:
